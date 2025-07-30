@@ -1,0 +1,26 @@
+[user]
+	email = mathias.oertel@commercetools.com
+	name = Mathias Oertel
+	signingkey = 05014D69B0FFBF10
+[commit]
+	gpgsign = true
+[color]
+	ui = auto
+[core]
+	editor = nvim
+	autocrlf = input
+	excludesFile = ~/.gitignore
+[push]
+	default = upstream
+[merge]
+	conflictstyle = diff3
+[filesystem "N/A|14.0.1|/dev/disk1s1"]
+	timestampResolution = 5000 nanoseconds
+	minRacyThreshold = 0 nanoseconds
+[pull]
+	rebase = false
+[init]
+	defaultBranch = main
+
+[url "git@github.com:commercetools"]
+	insteadOf = https://github.com/commercetools
