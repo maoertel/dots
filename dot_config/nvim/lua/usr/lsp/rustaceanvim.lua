@@ -6,10 +6,10 @@ vim.g.rustaceanvim = {
       border = "rounded",
     },
     autoSetHints = false,
-    inlay_hints = {
-      auto = false,
-      only_current_line = false,
-    },
+    -- inlay_hints = {
+    --   auto = false,
+    --   only_current_line = false,
+    -- },
   },
   server = {
     on_attach = handlers.on_attach,
@@ -61,8 +61,9 @@ vim.g.rustaceanvim = {
             hideNamedConstructor = false
           },
         },
-        checkOnSave = {
-          command = "clippy",
+        checkOnSave = true,
+        check = {
+          command = "clippy"
         },
       },
     },
