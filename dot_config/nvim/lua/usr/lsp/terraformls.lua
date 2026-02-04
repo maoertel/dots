@@ -1,10 +1,11 @@
 local handlers = require("usr.lsp.handlers")
-require("lspconfig").terraformls.setup {
+
+vim.lsp.config('terraformls', {
   on_attach = handlers.on_attach,
   capabilities = handlers.capabilities,
   filetypes = { "terraform", "terraform-vars", "tf", "tfvars" },
   path = "-tf-exec=~/bin/terraform",
-}
+})
 
 vim.api.nvim_create_autocmd(
   "BufWritePre", {

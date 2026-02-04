@@ -1,7 +1,7 @@
 local handlers = require("usr.lsp.handlers")
 local util = require("lspconfig/util")
 
-require("lspconfig").gopls.setup {
+vim.lsp.config('gopls', {
   on_attach = handlers.on_attach,
   capabilities = handlers.capabilities,
   cmd = { "gopls", "serve" },
@@ -18,7 +18,7 @@ require("lspconfig").gopls.setup {
       gofumpt = true,
     },
   },
-}
+})
 
 vim.api.nvim_create_autocmd(
   "BufWritePre", {

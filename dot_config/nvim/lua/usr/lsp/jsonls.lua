@@ -125,7 +125,7 @@ local schemas = {
 
 local handlers = require("usr.lsp.handlers")
 
-require("lspconfig").jsonls.setup {
+vim.lsp.config('jsonls', {
   on_attach = handlers.on_attach,
   capabilities = handlers.capabilities,
   settings = {
@@ -142,4 +142,4 @@ require("lspconfig").jsonls.setup {
       },
     },
   },
-}
+})

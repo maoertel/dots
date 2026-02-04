@@ -1,6 +1,6 @@
 local handlers = require("usr.lsp.handlers")
 
-require("lspconfig").yamlls.setup {
+vim.lsp.config('yamlls', {
   on_attach = handlers.on_attach,
   capabilities = handlers.capabilities,
   settings = {
@@ -12,4 +12,4 @@ require("lspconfig").yamlls.setup {
       },
     }
   }
-}
+})
