@@ -1,146 +1,113 @@
-local fn = vim.fn
--- Automatically install packer
-local install_path = fn.stdpath "data" .. "/site/pack/packer/start/packer.nvim"
-if fn.empty(fn.glob(install_path)) > 0 then
-  PACKER_BOOTSTRAP = fn.system {
+-- Bootstrap lazy.nvim
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
+  vim.fn.system({
     "git",
     "clone",
-    "--depth",
-    "1",
-    "https://github.com/wbthomason/packer.nvim",
-    install_path,
-  }
-  print "Installing packer, then close and reopen Neovim..."
-  vim.cmd [[packadd packer.nvim]]
+    "--filter=blob:none",
+    "https://github.com/folke/lazy.nvim.git",
+    "--branch=stable",
+    lazypath,
+  })
 end
+vim.opt.rtp:prepend(lazypath)
 
--- Autocommand that reloads neovim whenever you save the plugins.lua file
-vim.cmd [[
-  augroup packer_user_config
-    autocmd!
-    autocmd BufWritePost plugins.lua source <afile> | PackerSync
-  augroup end
-]]
-
-local status_ok, packer = pcall(require, "packer")
-if not status_ok then
-  vim.notify("Was not able to load 'packer'.")
-  return
-end
-
--- Have packer use a popup window
-packer.init {
-  display = {
-    open_fn = function()
-      return require("packer.util").float { border = "rounded" }
-    end,
-  },
-}
-
--- Install plugins here
-return packer.startup(function(use)
-  use "wbthomason/packer.nvim" -- Have packer manage itself
-  use "nvim-lua/popup.nvim" -- An implementation of the Popup API from vim in Neovim
-  use "nvim-lua/plenary.nvim" -- Useful lua functions used by lots of plugins
+-- Plugin specifications
+require("lazy").setup({
+  defaults = { lazy = false },
+  -- Core dependencies
+  "nvim-lua/popup.nvim",
+  "nvim-lua/plenary.nvim",
 
   -- Colorschemes
-  use 'navarasu/onedark.nvim'
-  use 'folke/tokyonight.nvim'
-  use "EdenEast/nightfox.nvim"
+  "navarasu/onedark.nvim",
+  "folke/tokyonight.nvim",
+  "EdenEast/nightfox.nvim",
 
   -- Tabline
-  use "nanozuki/tabby.nvim"
+  "nanozuki/tabby.nvim",
 
-  -- devicons
-  --[[ use "kyazdani42/nvim-web-devicons" ]]
-  use "nvim-tree/nvim-web-devicons"
+  -- Icons
+  "nvim-tree/nvim-web-devicons",
 
   -- Statusline
-  use {
+  {
     "nvim-lualine/lualine.nvim",
-    requires = { "nvim-tree/nvim-web-devicons", opt = true }
-  }
+    dependencies = { "nvim-tree/nvim-web-devicons" },
+  },
 
   -- Telescope
-  use "nvim-telescope/telescope.nvim"
-  use "nvim-telescope/telescope-ui-select.nvim"
-  use "nvim-telescope/telescope-file-browser.nvim"
+  "nvim-telescope/telescope.nvim",
+  "nvim-telescope/telescope-ui-select.nvim",
+  "nvim-telescope/telescope-file-browser.nvim",
 
   -- Trouble
-  use "folke/trouble.nvim"
+  "folke/trouble.nvim",
 
-  -- Autopairs (), [], {}
-  use "windwp/nvim-autopairs"
+  -- Autopairs
+  "windwp/nvim-autopairs",
 
-  -- Rainbow brackets
-  use {
-    "p00f/nvim-ts-rainbow",
-    after = 'nvim-treesitter'
-  }
+  -- Rainbow delimiters (replaces nvim-ts-rainbow)
+  "HiPhish/rainbow-delimiters.nvim",
 
   -- Comments
-  use "numToStr/Comment.nvim"
-  use "JoosepAlviste/nvim-ts-context-commentstring"
+  "numToStr/Comment.nvim",
+  "JoosepAlviste/nvim-ts-context-commentstring",
 
   -- Git
-  use "lewis6991/gitsigns.nvim"
-  use "tpope/vim-fugitive"
-  use "tpope/vim-rhubarb"
-  use { 'sindrets/diffview.nvim', requires = 'nvim-lua/plenary.nvim' }
+  "lewis6991/gitsigns.nvim",
+  "tpope/vim-fugitive",
+  "tpope/vim-rhubarb",
+  { "sindrets/diffview.nvim", dependencies = { "nvim-lua/plenary.nvim" } },
 
   -- Github Co-Pilot
-  use "github/copilot.vim"
+  "github/copilot.vim",
 
   -- Tree view
-  use "kyazdani42/nvim-tree.lua"
+  "nvim-tree/nvim-tree.lua",
 
   -- Harpoon
-  use "ThePrimeagen/harpoon"
+  "ThePrimeagen/harpoon",
 
   -- Zen mode
-  use "folke/zen-mode.nvim"
+  "folke/zen-mode.nvim",
 
-  -- Autocompletion (cmp) plugins
-  use "hrsh7th/nvim-cmp" -- autocompletion plugin
-  use "hrsh7th/cmp-buffer" -- buffer completions
-  use "hrsh7th/cmp-path" -- path completions
-  use "hrsh7th/cmp-cmdline" -- cmdline completions
-  use "saadparwaiz1/cmp_luasnip" -- snippet completions
-  use "hrsh7th/cmp-nvim-lsp" -- lsp completions
+  -- Autocompletion (cmp)
+  "hrsh7th/nvim-cmp",
+  "hrsh7th/cmp-buffer",
+  "hrsh7th/cmp-path",
+  "hrsh7th/cmp-cmdline",
+  "saadparwaiz1/cmp_luasnip",
+  "hrsh7th/cmp-nvim-lsp",
 
   -- Snippets
-  use "L3MON4D3/LuaSnip" -- Snippet engine
+  "L3MON4D3/LuaSnip",
 
   -- LSP
-  use "williamboman/mason.nvim"
-  use "williamboman/mason-lspconfig.nvim"
-  use "Maan2003/lsp_lines.nvim"
-  --[[ use 'WhoIsSethDaniel/lualine-lsp-progress.nvim' ]]
-  use "neovim/nvim-lspconfig" -- Enable LSP
+  "williamboman/mason.nvim",
+  "williamboman/mason-lspconfig.nvim",
+  "Maan2003/lsp_lines.nvim",
+  "neovim/nvim-lspconfig",
 
-  -- Tree sitter
-  use {
+  -- Treesitter
+  {
     "nvim-treesitter/nvim-treesitter",
-    run = ":TSUpdate",
-  }
-  use "nvim-treesitter/nvim-treesitter-context"
-  use "nvim-treesitter/playground"
+    build = ":TSUpdate",
+  },
+  "nvim-treesitter/nvim-treesitter-context",
+  -- playground removed: use built-in :InspectTree and :EditQuery instead
 
   -- Markdown preview
-  use({
+  {
     "iamcco/markdown-preview.nvim",
-    run = function() vim.fn["mkdp#util#install"]() end,
-  })
+    cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
+    ft = { "markdown" },
+    build = "cd app && npm install",
+  },
 
   -- Rust tools
-  use "mrcjkb/rustaceanvim"
+  "mrcjkb/rustaceanvim",
 
   -- Scala metals
- use({'scalameta/nvim-metals', requires = { "nvim-lua/plenary.nvim" }})
-
-  -- Automatically set up your configuration after cloning packer.nvim
-  -- Put this at the end after all plugins
-  if PACKER_BOOTSTRAP then
-    require("packer").sync()
-  end
-end)
+  { "scalameta/nvim-metals", dependencies = { "nvim-lua/plenary.nvim" } },
+})
