@@ -581,26 +581,22 @@ require("lazy").setup({
     dependencies = { "nvim-lua/plenary.nvim" },
   },
 
-  -- Treesitter
+  -- Treesitter (parser installer - highlighting is built into Neovim 0.10+)
   {
     "nvim-treesitter/nvim-treesitter",
     event = { "BufReadPost", "BufNewFile" },
-    build = ":TSUpdate",
+    build = function()
+      -- Install parsers on build
+      local parsers = {
+        "lua", "vim", "vimdoc", "query",
+        "rust", "go", "scala", "python",
+        "typescript", "javascript", "tsx", "json", "yaml",
+        "html", "css", "markdown", "markdown_inline",
+        "bash", "terraform", "hcl", "toml",
+      }
+      require("nvim-treesitter").install(parsers)
+    end,
     config = function()
-      require("nvim-treesitter").setup({
-        ensure_installed = {
-          "lua", "vim", "vimdoc", "query",
-          "rust", "go", "scala", "python",
-          "typescript", "javascript", "tsx", "json", "yaml",
-          "html", "css", "markdown", "markdown_inline",
-          "bash", "terraform", "hcl", "toml",
-        },
-        sync_install = false,
-        auto_install = true,
-        highlight = { enable = true },
-        indent = { enable = true },
-      })
-
       vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
         pattern = "*.conf",
         command = "set ft=hocon",
