@@ -305,6 +305,16 @@ require("lazy").setup({
     end,
   },
 
+  -- Multi-cursor
+  {
+    "mg979/vim-visual-multi",
+    keys = {
+      { "<C-n>", mode = { "n", "v" }, desc = "Multi-cursor word" },
+      { "<C-Down>", desc = "Multi-cursor down" },
+      { "<C-Up>", desc = "Multi-cursor up" },
+    },
+  },
+
   -- Autopairs
   {
     "windwp/nvim-autopairs",
