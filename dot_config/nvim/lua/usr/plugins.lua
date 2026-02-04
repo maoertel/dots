@@ -572,6 +572,16 @@ require("lazy").setup({
     end,
   },
 
+  -- Mason (package manager for LSP, DAP, linters, formatters)
+  {
+    "williamboman/mason.nvim",
+    cmd = "Mason",
+    build = ":MasonUpdate",
+    config = function()
+      require("mason").setup()
+    end,
+  },
+
   -- LSP
   {
     "neovim/nvim-lspconfig",
