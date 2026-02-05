@@ -811,6 +811,7 @@ require("lazy").setup({
   {
     "nvim-treesitter/nvim-treesitter",
     event = { "BufReadPost", "BufNewFile" },
+    cmd = { "TSInstall", "TSUpdate", "TSUninstall" },
     build = function()
       -- Install parsers on build
       local parsers = {
