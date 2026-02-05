@@ -83,10 +83,21 @@ require("lazy").setup({
     end,
   },
 
+  -- Telescope UI Select (load early to override vim.ui.select)
+  {
+    "nvim-telescope/telescope-ui-select.nvim",
+    event = "VeryLazy",
+    dependencies = { "nvim-telescope/telescope.nvim" },
+    config = function()
+      require("telescope").load_extension("ui-select")
+    end,
+  },
+
   -- Telescope
   {
     "nvim-telescope/telescope.nvim",
     cmd = "Telescope",
+    event = "VeryLazy",
     keys = {
       { "<leader>ff", "<cmd>Telescope find_files<cr>" },
       { "<leader>fj", "<cmd>Telescope find_files hidden=true<cr>" },
@@ -106,7 +117,6 @@ require("lazy").setup({
     },
     dependencies = {
       "nvim-lua/plenary.nvim",
-      "nvim-telescope/telescope-ui-select.nvim",
       "nvim-telescope/telescope-file-browser.nvim",
       "folke/trouble.nvim",
     },
@@ -155,7 +165,6 @@ require("lazy").setup({
         },
       })
 
-      telescope.load_extension("ui-select")
       telescope.load_extension("file_browser")
     end,
   },
