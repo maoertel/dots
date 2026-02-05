@@ -50,7 +50,6 @@ require("lazy").setup({
         { "<leader>d", group = "debug" },
         { "<leader>f", group = "find" },
         { "<leader>g", group = "git" },
-        { "<leader>h", group = "harpoon" },
         { "<leader>x", group = "trouble" },
         { "<leader>t", group = "tabs" },
         { "<leader>w", desc = "save" },
@@ -290,26 +289,6 @@ require("lazy").setup({
         trash = { cmd = "trash", require_confirm = true },
         actions = {
           open_file = { quit_on_open = true, window_picker = { enable = false } },
-        },
-      })
-    end,
-  },
-
-  -- Harpoon
-  {
-    "ThePrimeagen/harpoon",
-    keys = {
-      { "<leader>hh", '<cmd>lua require("harpoon.ui").toggle_quick_menu()<cr>' },
-      { "<leader>ha", '<cmd>lua require("harpoon.mark").add_file()<cr>' },
-      { "<leader>hr", '<cmd>lua require("harpoon.mark").rm_file()<cr>' },
-      { "<leader>hc", '<cmd>lua require("harpoon.mark").clear_all()<cr>' },
-    },
-    config = function()
-      require("harpoon").setup({
-        global_settings = {
-          save_on_toggle = true,
-          save_on_change = true,
-          excluded_filetypes = { "harpoon" },
         },
       })
     end,
