@@ -625,13 +625,21 @@ require("lazy").setup({
     keys = {
       { "<leader>db", function() require("dap").toggle_breakpoint() end, desc = "Toggle breakpoint" },
       { "<leader>dB", function() require("dap").set_breakpoint(vim.fn.input("Condition: ")) end, desc = "Conditional breakpoint" },
+      { "<leader>dp", function() require("dap").set_breakpoint(nil, nil, vim.fn.input("Log: ")) end, desc = "Log point" },
       { "<leader>dc", function() require("dap").continue() end, desc = "Continue" },
+      { "<leader>dC", function() require("dap").run_to_cursor() end, desc = "Run to cursor" },
       { "<leader>di", function() require("dap").step_into() end, desc = "Step into" },
       { "<leader>do", function() require("dap").step_over() end, desc = "Step over" },
       { "<leader>dO", function() require("dap").step_out() end, desc = "Step out" },
+      { "<leader>dh", function() require("dap.ui.widgets").hover() end, desc = "Hover value" },
       { "<leader>dr", function() require("dap").repl.open() end, desc = "Open REPL" },
       { "<leader>dl", function() require("dap").run_last() end, desc = "Run last" },
       { "<leader>dt", function() require("dap").terminate() end, desc = "Terminate" },
+      -- Telescope DAP
+      { "<leader>dfc", "<cmd>Telescope dap configurations<cr>", desc = "Debug configs" },
+      { "<leader>dfb", "<cmd>Telescope dap list_breakpoints<cr>", desc = "List breakpoints" },
+      { "<leader>dfv", "<cmd>Telescope dap variables<cr>", desc = "Variables" },
+      { "<leader>dff", "<cmd>Telescope dap frames<cr>", desc = "Frames" },
     },
     dependencies = {
       -- UI for DAP
@@ -655,6 +663,14 @@ require("lazy").setup({
         "theHamsta/nvim-dap-virtual-text",
         config = function()
           require("nvim-dap-virtual-text").setup()
+        end,
+      },
+      -- Telescope integration
+      {
+        "nvim-telescope/telescope-dap.nvim",
+        dependencies = { "nvim-telescope/telescope.nvim" },
+        config = function()
+          require("telescope").load_extension("dap")
         end,
       },
       -- Mason integration
