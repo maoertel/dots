@@ -661,6 +661,13 @@ require("lazy").setup({
     config = function()
       local dap = require("dap")
 
+      -- Signs
+      vim.fn.sign_define("DapBreakpoint", { text = "●", texthl = "DiagnosticError", linehl = "", numhl = "" })
+      vim.fn.sign_define("DapBreakpointCondition", { text = "◐", texthl = "DiagnosticWarn", linehl = "", numhl = "" })
+      vim.fn.sign_define("DapStopped", { text = "→", texthl = "DiagnosticOk", linehl = "DapStoppedLine", numhl = "" })
+      vim.fn.sign_define("DapBreakpointRejected", { text = "○", texthl = "DiagnosticError", linehl = "", numhl = "" })
+      vim.api.nvim_set_hl(0, "DapStoppedLine", { bg = "#3a3a3a" })
+
       -- Go (delve)
       dap.adapters.delve = {
         type = "server",
