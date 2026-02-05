@@ -1,0 +1,23 @@
+[".tmux/plugins/tpm"]
+    type = "git-repo"
+    url = "https://github.com/tmux-plugins/tpm.git"
+
+[".tmux/plugins/kube-tmux"]
+    type = "git-repo"
+    url = "https://github.com/jonmosco/kube-tmux.git"
+
+[".tmux/plugins/nord-tmux"]
+    type = "git-repo"
+    url = "https://github.com/arcticicestudio/nord-tmux.git"
+
+[".tmux/plugins/tmux-copycat"]
+    type = "git-repo"
+    url = "https://github.com/tmux-plugins/tmux-copycat.git"
+
+[".tmux/plugins/tmux-resurrect"]
+    type = "git-repo"
+    url = "https://github.com/tmux-plugins/tmux-resurrect.git"
+
+[".tmux/plugins/tmux-sensible"]
+    type = "git-repo"
+    url = "https://github.com/tmux-plugins/tmux-sensible.git"
