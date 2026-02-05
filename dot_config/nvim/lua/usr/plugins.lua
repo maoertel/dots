@@ -723,7 +723,35 @@ require("lazy").setup({
       }
       dap.configurations.javascript = dap.configurations.typescript
 
-      -- Rust (codelldb) - handled by rustaceanvim
+      -- Rust (codelldb)
+      dap.adapters.codelldb = {
+        type = "server",
+        port = "${port}",
+        executable = {
+          command = vim.fn.stdpath("data") .. "/mason/bin/codelldb",
+          args = { "--port", "${port}" },
+        },
+      }
+      dap.configurations.rust = {
+        {
+          name = "Debug",
+          type = "codelldb",
+          request = "launch",
+          program = function()
+            -- Find target/debug executable
+            local cwd = vim.fn.getcwd()
+            local name = vim.fn.fnamemodify(cwd, ":t")
+            local path = cwd .. "/target/debug/" .. name
+            return vim.fn.input("Executable: ", path, "file")
+          end,
+          cwd = "${workspaceFolder}",
+          stopOnEntry = false,
+          args = function()
+            local input = vim.fn.input("Arguments: ")
+            return vim.split(input, " ", { trimempty = true })
+          end,
+        },
+      }
     end,
   },
 
