@@ -23,4 +23,8 @@ style = "Regular"
 [window]
 dynamic_title = true
 startup_mode = "Maximized"
-decorations = "none"
+decorations = "buttonless"
+
+[window.padding]
+x = 8
+y = 8
