@@ -19,9 +19,6 @@ alias vl="~/Documents/commercetools/vault/vl.sh"
 
 alias magic="sed -E '1s/^/[/; $ ! s/(^.+$)/\1,/; $ s/$/]/' | jq"
 
-# dotfiles git alias
-alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
-
 # vault login
 alias vs='export VAULT_ADDR=https://vault.sre.europe-west1.gcp.commercetools.com && vault login -method=oidc -path=oidc/gsuite'
 alias vp='export VAULT_ADDR=https://vault.services.europe-west1.gcp.commercetools.com && vault login -method=oidc -path=oidc/gsuite'
