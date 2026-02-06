@@ -117,7 +117,7 @@ function todo { echo "- [ ] #t $1" >> ~/Documents/Obsidian\ Vault/Todo\ Source.m
 # LogScale configuration
   export HUMIO_BASE_URL="https://cloud.humio.com"  # Or your self-hosted URL
   export HUMIO_REPOSITORY="ctp-eu"                 # Your repository name
-  export HUMIO_API_TOKEN="K7TffXAVATyB0UGwuDSAE92O~O08GQNVoW4AIHkUxPneIzgyaZwLz1U2ExUnYP4dPm3pL"
+  export HUMIO_API_TOKEN="{{ onepasswordRead "op://Private/HUMIO_API_TOKEN/password" }}"
 
 # Enable kubectl autocomplete
 [[ /opt/homebrew/bin/kubectl ]] && source <(kubectl completion zsh)
