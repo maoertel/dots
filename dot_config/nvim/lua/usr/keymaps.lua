@@ -67,6 +67,4 @@ keymap("n", "<leader>tp", ":tabp<CR>", opts)
 keymap("n", "<leader>tmp", ":-tabmove<CR>", opts)
 keymap("n", "<leader>tmn", ":+tabmove<CR>", opts)
 
--- Copilot
-vim.g.copilot_no_tab_map = true
-keymap('i', '<C-]>', 'copilot#Accept("<CR>")', { expr = true, silent = true })
+-- Copilot (tab map disabled here; accept binding is in the plugin config)
