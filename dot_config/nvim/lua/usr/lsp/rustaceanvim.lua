@@ -56,8 +56,7 @@ vim.g.rustaceanvim = {
             hideNamedConstructor = false
           },
         },
-        checkOnSave = true,
-        command = {
+        check = {
           command = "clippy",
         },
       },
