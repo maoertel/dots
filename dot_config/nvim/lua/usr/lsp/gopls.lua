@@ -1,5 +1,5 @@
 local handlers = require("usr.lsp.handlers")
-local util = require("lspconfig/util")
+local util = require("lspconfig.util")
 
 vim.lsp.config('gopls', {
   on_attach = handlers.on_attach,
