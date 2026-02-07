@@ -21,7 +21,6 @@ family = "Hack Nerd Font"
 style = "Regular"
 
 [window]
-dynamic_title = true
 startup_mode = "Maximized"
 decorations = "buttonless"
 
