@@ -253,6 +253,7 @@ require("lazy").setup({
       require("nvim-tree").setup({
         renderer = {
           icons = {
+            diagnostics_placement = "before",
             glyphs = {
               default = "",
               symlink = "",
