@@ -576,7 +576,13 @@ require("lazy").setup({
       require("usr.lsp.python-lsp-server")
     end,
   },
-  { "Maan2003/lsp_lines.nvim", event = "LspAttach" },
+  {
+    "Maan2003/lsp_lines.nvim",
+    event = "LspAttach",
+    config = function()
+      require("lsp_lines").setup()
+    end,
+  },
 
   -- Debugging (DAP)
   {
