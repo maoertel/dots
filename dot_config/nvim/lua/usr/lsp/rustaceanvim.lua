@@ -5,11 +5,6 @@ vim.g.rustaceanvim = {
     hover_actions = {
       border = "rounded",
     },
-    autoSetHints = false,
-    inlay_hints = {
-      auto = false,
-      only_current_line = false,
-    },
   },
   server = {
     on_attach = handlers.on_attach,
