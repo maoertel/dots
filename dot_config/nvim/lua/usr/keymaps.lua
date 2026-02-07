@@ -67,4 +67,3 @@ keymap("n", "<leader>tp", ":tabp<CR>", opts)
 keymap("n", "<leader>tmp", ":-tabmove<CR>", opts)
 keymap("n", "<leader>tmn", ":+tabmove<CR>", opts)
 
--- Copilot (tab map disabled here; accept binding is in the plugin config)
