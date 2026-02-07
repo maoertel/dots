@@ -1,6 +1,6 @@
 local handlers = require("usr.lsp.handlers")
 
-vim.lsp.config('*', {
+vim.lsp.config('lua_ls', {
   on_attach = handlers.on_attach,
   capabilities = handlers.capabilities,
   settings = {
