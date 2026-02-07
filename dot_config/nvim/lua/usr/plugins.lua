@@ -552,6 +552,9 @@ require("lazy").setup({
     end,
   },
 
+  -- Helm chart syntax highlighting
+  { "towolf/vim-helm", ft = "helm" },
+
   -- LSP
   {
     "neovim/nvim-lspconfig",
@@ -574,6 +577,7 @@ require("lazy").setup({
       require("usr.lsp.terraformls")
       require("usr.lsp.gopls")
       require("usr.lsp.python-lsp-server")
+      require("usr.lsp.helm-ls")
     end,
   },
   {

@@ -5,6 +5,7 @@ require("mason-lspconfig").setup {
     -- "rust_analyzer",
     "gopls",
     "jsonls",
-    "yamlls"
+    "yamlls",
+    "helm_ls"
   },
 }
