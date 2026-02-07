@@ -747,18 +747,8 @@ require("lazy").setup({
     end,
   },
 
-  -- Rust
-  {
-    "mrcjkb/rustaceanvim",
-    ft = { "rust" },
-    config = function()
-      vim.g.rustaceanvim = {
-        dap = {
-          autoload_configurations = true,
-        },
-      }
-    end,
-  },
+  -- Rust (config in lsp/rustaceanvim.lua)
+  { "mrcjkb/rustaceanvim", ft = { "rust" } },
 
   -- Scala
   {

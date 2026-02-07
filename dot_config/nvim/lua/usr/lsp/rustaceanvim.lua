@@ -1,6 +1,9 @@
 local handlers = require("usr.lsp.handlers")
 
 vim.g.rustaceanvim = {
+  dap = {
+    autoload_configurations = true,
+  },
   tools = {
     hover_actions = {
       border = "rounded",
