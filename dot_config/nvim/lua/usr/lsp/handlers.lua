@@ -45,21 +45,22 @@ local function lsp_highlight_document(client, bufnr)
 end
 
 local function lsp_keymaps(bufnr)
-  local opts = { noremap = true, silent = true }
-  vim.api.nvim_buf_set_keymap(bufnr, "n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts)
-  vim.api.nvim_buf_set_keymap(bufnr, "n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
-  vim.api.nvim_buf_set_keymap(bufnr, "n", "gp", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
-  vim.api.nvim_buf_set_keymap(bufnr, "n", "<C-k>", "<cmd>lua vim.lsp.buf.signature_help({ border = \"rounded\" })<CR>", opts)
-  vim.api.nvim_buf_set_keymap(bufnr, "n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
-  vim.api.nvim_buf_set_keymap(bufnr, "n", "K", "<cmd>lua vim.lsp.buf.hover({ border = \"rounded\" })<CR>", opts)
-  vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
-  vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts)
-  vim.api.nvim_buf_set_keymap(bufnr, "n", "gl", '<cmd>lua vim.diagnostic.open_float({ border = "rounded" })<CR>', opts)
-  vim.api.nvim_buf_set_keymap(bufnr, "n", "[d", '<cmd>lua vim.diagnostic.goto_prev({ border = "rounded" })<CR>', opts)
-  vim.api.nvim_buf_set_keymap(bufnr, "n", "]d", '<cmd>lua vim.diagnostic.goto_next({ border = "rounded" })<CR>', opts)
-  vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>sl", "<cmd>lua vim.diagnostic.setloclist()<CR>", opts)
-  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>fo', "<cmd>lua vim.lsp.buf.format({ async = true })<CR>", opts)
-  vim.cmd [[ command! Format execute 'lua vim.lsp.buf.format({ async = true })' ]]
+  local opts = { noremap = true, silent = true, buffer = bufnr }
+  local keymap = vim.keymap.set
+
+  keymap("n", "gD", vim.lsp.buf.declaration, opts)
+  keymap("n", "gd", vim.lsp.buf.definition, opts)
+  keymap("n", "gp", vim.lsp.buf.implementation, opts)
+  keymap("n", "<C-k>", function() vim.lsp.buf.signature_help({ border = "rounded" }) end, opts)
+  keymap("n", "gr", vim.lsp.buf.references, opts)
+  keymap("n", "K", function() vim.lsp.buf.hover({ border = "rounded" }) end, opts)
+  keymap("n", "<leader>rn", vim.lsp.buf.rename, opts)
+  keymap("n", "<leader>ca", vim.lsp.buf.code_action, opts)
+  keymap("n", "gl", function() vim.diagnostic.open_float({ border = "rounded" }) end, opts)
+  keymap("n", "[d", function() vim.diagnostic.jump({ count = -1, float = { border = "rounded" } }) end, opts)
+  keymap("n", "]d", function() vim.diagnostic.jump({ count = 1, float = { border = "rounded" } }) end, opts)
+  keymap("n", "<leader>sl", vim.diagnostic.setloclist, opts)
+  keymap("n", "<leader>fo", function() vim.lsp.buf.format({ async = true }) end, opts)
 end
 
 M.on_attach = function(client, bufnr)
