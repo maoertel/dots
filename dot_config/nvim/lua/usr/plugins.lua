@@ -15,7 +15,6 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup({
   -- Core dependencies (load immediately)
   { "nvim-lua/plenary.nvim", lazy = true },
-  { "nvim-lua/popup.nvim", lazy = true },
   { "nvim-tree/nvim-web-devicons", lazy = true },
 
   -- Colorscheme (load first)
