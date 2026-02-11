@@ -2,6 +2,22 @@
 path = "~/Downloads"
 
 [[rule]]
+name = "Trash old DMG installers"
+[rule.condition]
+extension = "dmg"
+age_days_greater_than = 7
+[rule.action]
+type = "trash"
+
+[[rule]]
+name = "Trash old calendar invites"
+[rule.condition]
+extension = "ics"
+age_days_greater_than = 7
+[rule.action]
+type = "trash"
+
+[[rule]]
 name = "Organize payslips"
 [rule.condition]
 name_regex = "^Mathias_Oertel_Payslip_\\d{2}-\\d{4}\\.pdf$"
