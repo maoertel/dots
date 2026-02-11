@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+file="$1"
+basename="$(basename "$file")"
+
+# Extract month and year from pattern: Mathias_Oertel_Payslip_MM-YYYY.pdf
+if [[ "$basename" =~ ([0-9]{2})-([0-9]{4})\.pdf$ ]]; then
+  month="${BASH_REMATCH[1]}"
+  year="${BASH_REMATCH[2]}"
+else
+  echo "ERROR: Could not extract date from '$basename'" >&2
+  exit 1
+fi
+
+dest_dir="$HOME/Library/CloudStorage/ProtonDrive-mathias.oertel@pm.me-folder/Documents/Arbeit/commercetools/Payslips/$year"
+dest_file="$dest_dir/${year}-${month}_payslip.pdf"
+
+mkdir -p "$dest_dir"
+mv "$file" "$dest_file"
+echo "Moved '$basename' -> '$dest_file'"

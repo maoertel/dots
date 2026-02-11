@@ -1,0 +1,20 @@
+[[watch]]
+path = "~/Downloads"
+
+[[rule]]
+name = "Organize payslips"
+[rule.condition]
+name_regex = "^Mathias_Oertel_Payslip_\\d{2}-\\d{4}\\.pdf$"
+[rule.action]
+type = "run"
+command = "{{ .chezmoi.homeDir }}/.config/hazelnut/scripts/organize-payslip.sh"
+args = ["{path}"]
+
+[general]
+log_level = "info"
+debounce_seconds = 2
+polling_interval_secs = 30
+log_retention = 1000
+start_daemon_on_launch = true
+notifications_enabled = false
+theme = "cyberpunk"
