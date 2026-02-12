@@ -10,10 +10,18 @@ age_days_greater_than = 7
 type = "trash"
 
 [[rule]]
-name = "Trash old calendar invites"
+name = "Trash old PKG installers"
 [rule.condition]
-extension = "ics"
+extension = "pkg"
 age_days_greater_than = 7
+[rule.action]
+type = "trash"
+
+[[rule]]
+name = "Trash incomplete downloads"
+[rule.condition]
+extensions = ["crdownload", "part"]
+age_days_greater_than = 3
 [rule.action]
 type = "trash"
 
@@ -25,6 +33,15 @@ name_regex = "^Mathias_Oertel_Payslip_\\d{2}-\\d{4}\\.pdf$"
 type = "run"
 command = "{{ .chezmoi.homeDir }}/.config/hazelnut/scripts/organize-payslip.sh"
 args = ["{path}"]
+
+[[rule]]
+name = "Route commercetools docs to Inbox"
+[rule.condition]
+name_regex = "(?i)(commercetools|commerce-tools)"
+[rule.action]
+type = "move"
+destination = "~/Library/CloudStorage/ProtonDrive-mathias.oertel@pm.me-folder/Documents/Arbeit/commercetools/Inbox"
+create_destination = true
 
 [general]
 log_level = "info"
