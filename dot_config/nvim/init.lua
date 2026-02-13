@@ -2,5 +2,5 @@
 require("usr.options")
 require("usr.keymaps")
 
--- Plugins (lazy.nvim handles all plugin configs)
-require("usr.plugins")
+-- Plugins (lazy.nvim bootstrap + auto-discovers lua/usr/plugins/*.lua)
+require("usr.lazy")
