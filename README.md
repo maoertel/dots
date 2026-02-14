@@ -7,14 +7,20 @@ My dotfiles, managed with [chezmoi](https://www.chezmoi.io/).
 | File/Directory | Description |
 |----------------|-------------|
 | `.aerospace.toml` | AeroSpace window manager |
+| `.claude/` | Claude Code config — commands, rules, review (symlinked to source repos) |
 | `.gitconfig` | Git configuration |
-| `.gitignore` | Global gitignore |
+| `.gitignore` | Local gitignore |
+| `.gitignore_global` | Global gitignore |
+| `.oh-my-zsh/custom/` | Custom oh-my-zsh aliases |
 | `.tmux.conf` | tmux configuration |
-| `.zshrc` | Zsh shell configuration |
+| `.zprofile` | Zsh login shell profile |
+| `.zshenv` | Zsh environment variables |
+| `.zshrc` | Zsh shell configuration (template) |
 | `.config/alacritty/` | Alacritty terminal |
 | `.config/gh/` | GitHub CLI |
+| `.config/hazelnut/` | Hazelnut file organizer rules |
 | `.config/karabiner/` | Karabiner-Elements key mappings |
-| `.config/nvim/` | Neovim configuration |
+| `.config/nvim/` | Neovim configuration (lazy.nvim) |
 | `.config/thefuck/` | thefuck settings |
 
 ## Setup on a new machine
@@ -47,10 +53,11 @@ These dotfiles assume you have the following installed:
 
 - [oh-my-zsh](https://ohmyz.sh/) - not managed by chezmoi, install separately
 - [tmux](https://github.com/tmux/tmux) + [tpm](https://github.com/tmux-plugins/tpm) - plugins installed via tpm
-- [Neovim](https://neovim.io/) + [packer.nvim](https://github.com/wbthomason/packer.nvim)
+- [Neovim](https://neovim.io/) 0.11+ (plugins managed by [lazy.nvim](https://github.com/folke/lazy.nvim))
 - [AeroSpace](https://github.com/nikitabobko/AeroSpace) (macOS window manager)
 - [Alacritty](https://alacritty.org/)
 - [Karabiner-Elements](https://karabiner-elements.pqrs.org/)
+- [Claude Code](https://claude.ai/code) (config symlinks to [maoertel/claude](https://github.com/maoertel/claude))
 
 ## Common commands
 
