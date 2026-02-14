@@ -61,9 +61,7 @@ if [ -f "$HOME/google-cloud-sdk/completion.zsh.inc" ]; then . "$HOME/google-clou
 # Environment variables
 # ------------------------------
 
-# LogScale / Humio (token via 1Password)
-export HUMIO_BASE_URL="https://cloud.humio.com"
-export HUMIO_REPOSITORY="ctp-eu"
+# LogScale / Humio
 export HUMIO_API_TOKEN="{{ onepasswordRead "op://commercetools/HUMIO_API_TOKEN/password" }}"
 
 # commercetools Homebrew tap token (via 1Password)
