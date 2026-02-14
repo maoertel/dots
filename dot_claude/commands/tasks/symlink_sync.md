@@ -1,0 +1,1 @@
+/Users/mathiasoertel/Documents/Projekte/claude/commands/tasks/sync.md
