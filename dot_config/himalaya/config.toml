@@ -1,0 +1,25 @@
+[accounts.commercetools]
+default = true
+email = "mathias.oertel@commercetools.com"
+display-name = "Mathias Oertel"
+
+backend.type = "imap"
+backend.host = "imap.gmail.com"
+backend.port = 993
+backend.login = "mathias.oertel@commercetools.com"
+backend.auth.type = "password"
+backend.auth.command = "security find-generic-password -s himalaya-gmail -a mathias.oertel@commercetools.com -w"
+backend.encryption.type = "tls"
+
+folder.alias.trash = "[Gmail]/Trash"
+folder.alias.sent = "[Gmail]/Sent Mail"
+folder.alias.drafts = "[Gmail]/Drafts"
+folder.alias.spam = "[Gmail]/Spam"
+
+message.send.backend.type = "smtp"
+message.send.backend.host = "smtp.gmail.com"
+message.send.backend.port = 465
+message.send.backend.login = "mathias.oertel@commercetools.com"
+message.send.backend.auth.type = "password"
+message.send.backend.auth.command = "security find-generic-password -s himalaya-gmail -a mathias.oertel@commercetools.com -w"
+message.send.backend.encryption.type = "tls"
