@@ -67,6 +67,10 @@ export HUMIO_API_TOKEN="{{ onepasswordRead "op://commercetools/HUMIO_API_TOKEN/p
 # commercetools Homebrew tap token (via 1Password)
 export HOMEBREW_GITHUB_API_TOKEN="{{ onepasswordRead "op://commercetools/HOMEBREW_GITHUB_API_TOKEN/password" }}"
 
+# Atlassian API tokens (via macOS Keychain)
+export JIRA_API_TOKEN="$(security find-generic-password -a "{{ .email }}" -s "atlassian_api_token" -w)"
+export CONFLUENCE_API_TOKEN="$JIRA_API_TOKEN"
+
 # ------------------------------
 # PATH
 # ------------------------------
