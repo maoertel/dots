@@ -1,5 +1,5 @@
 [user]
-	email = mathias.oertel@commercetools.com
+	email = {{ .email }}
 	name = Mathias Oertel
 	signingkey = 05014D69B0FFBF10
 [commit]
@@ -9,7 +9,7 @@
 [core]
 	editor = nvim
 	autocrlf = input
-	excludesfile = /Users/mathiasoertel/.gitignore_global
+	excludesfile = {{ .chezmoi.homeDir }}/.gitignore_global
 [push]
 	default = upstream
 [merge]
