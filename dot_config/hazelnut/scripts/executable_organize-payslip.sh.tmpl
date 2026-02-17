@@ -13,7 +13,7 @@ else
   exit 1
 fi
 
-dest_dir="$HOME/Library/CloudStorage/ProtonDrive-mathias.oertel@pm.me-folder/Documents/Arbeit/commercetools/Payslips/$year"
+dest_dir="$HOME/Library/CloudStorage/ProtonDrive-{{ .personal_email }}-folder/Documents/Arbeit/commercetools/Payslips/$year"
 dest_file="$dest_dir/${year}-${month}_payslip.pdf"
 
 mkdir -p "$dest_dir"

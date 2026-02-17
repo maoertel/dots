@@ -40,7 +40,7 @@ name = "Route commercetools docs to Inbox"
 name_regex = "(?i)(commercetools|commerce-tools)"
 [rule.action]
 type = "move"
-destination = "~/Library/CloudStorage/ProtonDrive-mathias.oertel@pm.me-folder/Documents/Arbeit/commercetools/Inbox"
+destination = "~/Library/CloudStorage/ProtonDrive-{{ .personal_email }}-folder/Documents/Arbeit/commercetools/Inbox"
 create_destination = true
 
 [general]
