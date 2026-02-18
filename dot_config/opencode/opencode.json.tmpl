@@ -16,6 +16,16 @@
       },
       "enabled": true,
       "timeout": 60000
+    },
+    "grafana-mcp": {
+      "type": "local",
+      "command": [
+        "{{ .chezmoi.homeDir }}/bin/mcp-auth-proxy",
+        "-url",
+        "https://grafana-mcp.sso.sre.europe-west1.gcp.commercetools.com/sse"
+      ],
+      "enabled": true,
+      "timeout": 60000
     }
   }
 }
