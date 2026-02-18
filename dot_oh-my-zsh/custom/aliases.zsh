@@ -2,6 +2,7 @@ alias l="ls -FlaG"
 
 alias v="nvim"
 alias c="claude"
+alias o="opencode"
 
 # k8s
 alias k="kubectl"
