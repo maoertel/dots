@@ -1,1 +1,0 @@
-/Users/mathiasoertel/Documents/Projekte/claude/commands/tasks/_conventions.md
