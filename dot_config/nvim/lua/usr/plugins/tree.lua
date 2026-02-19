@@ -48,7 +48,7 @@ return {
           enable = true,
           icons = { hint = "", info = "", warning = "", error = "" },
         },
-        update_focused_file = { enable = true, update_root = true },
+        update_focused_file = { enable = true, update_root = false },
         filters = { dotfiles = false },
         git = { enable = true, ignore = true, timeout = 500 },
         view = { width = 30, side = "left" },
