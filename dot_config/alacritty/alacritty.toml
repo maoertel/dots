@@ -23,6 +23,7 @@ style = "Regular"
 [window]
 startup_mode = "Maximized"
 decorations = "buttonless"
+dynamic_padding = true
 
 [window.padding]
 x = 8
