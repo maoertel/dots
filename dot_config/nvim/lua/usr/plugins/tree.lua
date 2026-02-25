@@ -23,7 +23,7 @@ return {
               default = "",
               symlink = "",
               git = {
-                unstaged = "",
+                unstaged = "",
                 staged = "S",
                 unmerged = "",
                 renamed = "➜",
