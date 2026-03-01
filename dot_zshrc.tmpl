@@ -53,8 +53,7 @@ if [[ /opt/homebrew/bin/kubectl ]]; then
   }
 fi
 
-# Google Cloud SDK - path and shell completion
-if [ -f "$HOME/google-cloud-sdk/path.zsh.inc" ]; then . "$HOME/google-cloud-sdk/path.zsh.inc"; fi
+# Google Cloud SDK - shell completion
 if [ -f "$HOME/google-cloud-sdk/completion.zsh.inc" ]; then . "$HOME/google-cloud-sdk/completion.zsh.inc"; fi
 
 # ------------------------------
@@ -70,14 +69,6 @@ export HOMEBREW_GITHUB_API_TOKEN="{{ onepasswordRead "op://commercetools/HOMEBRE
 # Atlassian API tokens (via 1Password)
 export JIRA_API_TOKEN="{{ onepasswordRead "op://commercetools/OpenCode Atlassian MCP Token/password" }}"
 export CONFLUENCE_API_TOKEN="$JIRA_API_TOKEN"
-
-# ------------------------------
-# PATH
-# ------------------------------
-
-export PATH="$HOME/bin:$PATH"              # tfswitch-managed terraform
-export PATH="$HOME/.rd/bin:$PATH"          # Rancher Desktop
-export PATH="$HOME/.local/bin:$PATH"       # User-local binaries
 
 # ------------------------------
 # Functions

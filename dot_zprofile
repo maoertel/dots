@@ -1,4 +1,19 @@
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
-# >>> coursier install directory >>>
+# Coursier
 export PATH="$PATH:$HOME/Library/Application Support/Coursier/bin"
+
+# Obsidian
+export PATH="$PATH:/Applications/Obsidian.app/Contents/MacOS"
+
+# Google Cloud SDK
+if [ -f "$HOME/google-cloud-sdk/path.zsh.inc" ]; then . "$HOME/google-cloud-sdk/path.zsh.inc"; fi
+
+# tfswitch-managed terraform
+export PATH="$HOME/bin:$PATH"
+
+# Rancher Desktop
+export PATH="$HOME/.rd/bin:$PATH"
+
+# User-local binaries
+export PATH="$HOME/.local/bin:$PATH"
