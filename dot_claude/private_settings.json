@@ -1,0 +1,37 @@
+{
+  "model": "opus",
+  "statusLine": {
+    "type": "command",
+    "command": "~/.claude/statusline.sh",
+    "padding": 0
+  },
+  "enabledPlugins": {
+    "rust-analyzer-lsp@claude-plugins-official": true
+  },
+  "alwaysThinkingEnabled": true,
+  "sandbox": {
+    "excludedCommands": ["notify.sh", "terminal-notifier", "osascript"]
+  },
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "FOLDER=$(cat - | jq -r '.cwd // empty' 2>/dev/null | xargs basename 2>/dev/null) && [ -n \"$FOLDER\" ] && [ -n \"$TMUX\" ] && tmux rename-window \"$FOLDER\""
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "~/.claude/notify.sh"
+          }
+        ]
+      }
+    ]
+  }
+}
