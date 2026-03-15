@@ -55,19 +55,7 @@
       "mcp__claude_ai_Atlassian__search"
     ]
   },
-  "model": "opus",
-  "statusLine": {
-    "type": "command",
-    "command": "~/.claude/statusline.sh",
-    "padding": 0
-  },
-  "enabledPlugins": {
-    "rust-analyzer-lsp@claude-plugins-official": true
-  },
-  "alwaysThinkingEnabled": true,
-  "sandbox": {
-    "excludedCommands": ["notify.sh", "terminal-notifier", "osascript"]
-  },
+  "model": "opus[1m]",
   "hooks": {
     "SessionStart": [
       {
@@ -89,5 +77,21 @@
         ]
       }
     ]
-  }
+  },
+  "statusLine": {
+    "type": "command",
+    "command": "~/.claude/statusline.sh",
+    "padding": 0
+  },
+  "enabledPlugins": {
+    "rust-analyzer-lsp@claude-plugins-official": true
+  },
+  "sandbox": {
+    "excludedCommands": [
+      "notify.sh",
+      "terminal-notifier",
+      "osascript"
+    ]
+  },
+  "alwaysThinkingEnabled": true
 }

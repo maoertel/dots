@@ -9,4 +9,5 @@ return {
   },
   { "navarasu/onedark.nvim", lazy = true },
   { "folke/tokyonight.nvim", lazy = true },
+  { "rebelot/kanagawa.nvim", lazy = true },
 }
