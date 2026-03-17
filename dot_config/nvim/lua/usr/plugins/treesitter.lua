@@ -11,7 +11,7 @@ return {
         "rust", "go", "scala", "python",
         "typescript", "javascript", "tsx", "json", "yaml",
         "html", "css", "markdown", "markdown_inline",
-        "bash", "terraform", "hcl", "toml",
+        "bash", "terraform", "hcl", "toml", "vrl",
       }
       require("nvim-treesitter").install(parsers)
     end,
@@ -20,6 +20,8 @@ return {
         pattern = "*.conf",
         command = "set ft=hocon",
       })
+
+      vim.filetype.add({ extension = { vrl = "vrl" } })
     end,
   },
   {
