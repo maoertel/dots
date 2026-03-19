@@ -2,6 +2,7 @@ alias l="ls -FlaG"
 
 alias v="nvim"
 alias c="claude"
+alias cr="claude --resume"
 alias o="opencode"
 
 # k8s
