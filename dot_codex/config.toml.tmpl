@@ -1,0 +1,52 @@
+model = "gpt-5.4"
+[projects."{{ .chezmoi.homeDir }}"]
+trust_level = "trusted"
+
+[notice.model_migrations]
+"gpt-5.3-codex" = "gpt-5.4"
+
+[mcp_servers.mongodb]
+command = "npx"
+args = ["-y", "mongodb-mcp-server@latest", "--config", "{{ .chezmoi.homeDir }}/.mongodb/mongodb-mcp/config.json"]
+
+[mcp_servers.slack]
+command = "{{ .chezmoi.homeDir }}/Documents/Projekte/slack-personal-mcp/target/release/slack-personal-mcp"
+
+[mcp_servers.grafana-mcp]
+command = "{{ .chezmoi.homeDir }}/bin/mcp-auth-proxy"
+args = ["-url", "https://grafana-mcp.sso.sre.europe-west1.gcp.commercetools.com/sse"]
+startup_timeout_sec = 60.0
+
+[mcp_servers.commercetools-docs]
+url = "https://docs.commercetools.com/apis/mcp"
+
+[mcp_servers.obsidian]
+command = "npx"
+args = ["obsidian-mcp-server"]
+
+[mcp_servers.obsidian.env]
+OBSIDIAN_API_KEY = "325bd30522f81416e236b6462f7171a55e94b8de3b261da972acf7129afedb7e"
+OBSIDIAN_BASE_URL = "https://127.0.0.1:27124"
+OBSIDIAN_ENABLE_CACHE = "true"
+OBSIDIAN_VERIFY_SSL = "false"
+
+[mcp_servers.atlassian]
+command = "uvx"
+args = ["--python=3.12", "mcp-atlassian", "--transport", "stdio"]
+
+[mcp_servers.atlassian.env]
+CONFLUENCE_TOKEN = "{{ env "JIRA_API_TOKEN" }}"
+CONFLUENCE_URL = "https://commercetools.atlassian.net/wiki"
+CONFLUENCE_USERNAME = "{{ .email }}"
+JIRA_TOKEN = "{{ env "JIRA_API_TOKEN" }}"
+JIRA_URL = "https://commercetools.atlassian.net"
+JIRA_USERNAME = "{{ .email }}"
+
+[mcp_servers.mongodb-atlas-mcp]
+command = "mongodb-atlas-mcp"
+args = ["connect"]
+startup_timeout_sec = 60
+
+[mcp_servers.google-calendar]
+command = "gws"
+args = ["mcp", "--services", "calendar"]
