@@ -25,7 +25,7 @@ command = "npx"
 args = ["obsidian-mcp-server"]
 
 [mcp_servers.obsidian.env]
-OBSIDIAN_API_KEY = "325bd30522f81416e236b6462f7171a55e94b8de3b261da972acf7129afedb7e"
+OBSIDIAN_API_KEY = "{{ .obsidian_api_key }}"
 OBSIDIAN_BASE_URL = "https://127.0.0.1:27124"
 OBSIDIAN_ENABLE_CACHE = "true"
 OBSIDIAN_VERIFY_SSL = "false"
