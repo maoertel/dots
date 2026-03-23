@@ -2,6 +2,9 @@ model = "gpt-5.4"
 [projects."{{ .chezmoi.homeDir }}"]
 trust_level = "trusted"
 
+[projects."{{ .chezmoi.homeDir }}/Development/claude"]
+trust_level = "trusted"
+
 [notice.model_migrations]
 "gpt-5.3-codex" = "gpt-5.4"
 
