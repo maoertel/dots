@@ -1,4 +1,5 @@
 model = "gpt-5.4"
+model_reasoning_effort = "medium"
 [projects."{{ .chezmoi.homeDir }}"]
 trust_level = "trusted"
 
@@ -53,3 +54,6 @@ startup_timeout_sec = 60
 [mcp_servers.google-calendar]
 command = "gws"
 args = ["mcp", "--services", "calendar"]
+
+[tui]
+status_line = ["model-with-reasoning", "context-remaining", "current-dir"]
