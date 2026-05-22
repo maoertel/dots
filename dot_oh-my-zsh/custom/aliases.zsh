@@ -4,6 +4,8 @@ alias v="nvim"
 alias c="claude"
 alias cr="claude --resume"
 alias o="opencode"
+alias omai="$HOME/Documents/Projekte/oh-my-ai-shell/target/debug/omai"
+alias oktapus="$HOME/Documents/Projekte/oktapus/target/debug/oktapus"
 
 # k8s
 alias k="kubectl"
