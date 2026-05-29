@@ -5,7 +5,8 @@ alias c="claude"
 alias cr="claude --resume"
 alias o="opencode"
 alias omai="$HOME/Documents/Projekte/oh-my-ai-shell/target/debug/omai"
-alias oktapus="$HOME/Documents/Projekte/oktapus/target/debug/oktapus"
+# alias oktapus="$HOME/Documents/Projekte/oktapus/target/debug/oktapus"
+alias ag="ANTHROPIC_BASE_URL=http://127.0.0.1:8765 ANTHROPIC_MODEL=claude-opus-4-8[1m] ANTHROPIC_AUTH_TOKEN=ignored ENABLE_TOOL_SEARCH=true claude"
 
 # k8s
 alias k="kubectl"
