@@ -70,6 +70,9 @@ export HOMEBREW_GITHUB_API_TOKEN="{{ onepasswordRead "op://commercetools/HOMEBRE
 export JIRA_API_TOKEN="{{ onepasswordRead "op://commercetools/OpenCode Atlassian MCP Token/password" }}"
 export CONFLUENCE_API_TOKEN="$JIRA_API_TOKEN"
 
+# Obsidian Local REST API key (via chezmoi data; same source as ~/.codex/config.toml)
+export OBSIDIAN_API_KEY="{{ .obsidian_api_key }}"
+
 # ------------------------------
 # Functions
 # ------------------------------
