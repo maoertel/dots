@@ -6,20 +6,20 @@ alias cr="claude --resume"
 alias o="opencode"
 alias omai="$HOME/Documents/Projekte/oh-my-ai-shell/target/debug/omai"
 # alias oktapus="$HOME/Documents/Projekte/oktapus/target/debug/oktapus"
-# Claude Code through the agentgateway (oktapus forward :8765). A function, not
-# an alias, so `ag --resume <id>` / `ag -c` keep the gateway envs too. Plain
-# `claude` stays direct-to-Anthropic; the gateway is opt-in via ag/agr.
-ag() {
+# Claude Code through the agentgateway (oktapus forward :8765). Functions, not
+# aliases, so resume keeps the gateway envs. Plain `claude` stays
+# direct-to-Anthropic; the gateway is opt-in via ag/agr.
+_ag_gateway() {
   ANTHROPIC_BASE_URL=http://127.0.0.1:8765 \
   ANTHROPIC_AUTH_TOKEN=ignored \
-  ANTHROPIC_MODEL='claude-opus-4-8[1m]' \
   ANTHROPIC_DEFAULT_OPUS_MODEL='claude-opus-4-8[1m]' \
   ANTHROPIC_DEFAULT_SONNET_MODEL='claude-sonnet-4-6' \
   ANTHROPIC_DEFAULT_HAIKU_MODEL='claude-haiku-4-5' \
   ENABLE_TOOL_SEARCH=true \
   claude "$@"
 }
-agr() { ag --resume "$@"; }   # resume through the gateway: agr <id>
+ag()  { _ag_gateway --model 'claude-opus-4-8[1m]' "$@"; }  # new session: start on Opus 4.8
+agr() { _ag_gateway --resume "$@"; }                       # resume: keep the session's own model
 
 # k8s
 alias k="kubectl"
