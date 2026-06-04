@@ -4,7 +4,8 @@ alias v="nvim"
 alias c="claude"
 alias cr="claude --resume"
 alias o="opencode"
-alias omai="$HOME/Documents/Projekte/oh-my-ai-shell/target/debug/omai"
+# omai is installed to ~/.cargo/bin via `cargo install --path .` — no alias
+# needed. To upgrade: cd ~/Documents/Projekte/oh-my-ai-shell && git pull && cargo install --path .
 # alias oktapus="$HOME/Documents/Projekte/oktapus/target/debug/oktapus"
 # Claude Code through the agentgateway (oktapus forward :8765). Functions, not
 # aliases, so resume keeps the gateway envs. Plain `claude` stays
