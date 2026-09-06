@@ -1,0 +1,23 @@
+{{- if eq .chezmoi.os "darwin" -}}
+#!/bin/sh
+set -eu
+
+# Invisible Dock: hidden, never revealed by hover, no animation.
+#
+# autohide-delay is a ~17 min hover delay, so the Dock never appears
+# when the pointer hits the screen edge. It does NOT gate every reveal
+# path though: an app calling requestUserAttention (icon bounce) force-
+# shows the Dock regardless, which flashes it for a fraction of a second.
+# no-bouncing closes that path. Without it the Dock logs
+# "Showing all windows (it's necessary)" on every attention request.
+defaults write com.apple.dock autohide -bool true
+defaults write com.apple.dock autohide-delay -float 1000
+defaults write com.apple.dock autohide-time-modifier -float 0
+defaults write com.apple.dock no-bouncing -bool true
+
+# Placement and size: small tile strip on the right edge.
+defaults write com.apple.dock orientation -string right
+defaults write com.apple.dock tilesize -int 16
+
+killall Dock 2>/dev/null || true
+{{- end }}
