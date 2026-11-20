@@ -15,6 +15,7 @@ return {
         },
       })
       wk.add({
+        { "<leader>c", group = "code / copilot" },
         { "<leader>d", group = "debug" },
         { "<leader>f", group = "find" },
         { "<leader>g", group = "git" },
